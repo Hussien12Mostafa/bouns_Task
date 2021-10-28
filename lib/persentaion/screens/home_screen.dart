@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:todoly/data/data.dart';
+import 'package:todoly/persentaion/screens/add_task_screen.dart';
 import 'package:todoly/persentaion/screens/allTask.dart';
 import 'package:todoly/persentaion/screens/done_screen.dart';
 import 'package:todoly/persentaion/screens/to_do_screen.dart';
@@ -15,11 +16,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _select = 0;
-  static List<Widget> _pages = <Widget>[
-    AllTasks(),
-    ToDoScreen(),
-    DoneScreen()
-  ];
+  static List<Widget> _pages = <Widget>[AllTasks(), ToDoScreen(), DoneScreen()];
   @override
   void initState() {
     super.initState();
@@ -40,7 +37,8 @@ class _HomeScreenState extends State<HomeScreen> {
         length: 3,
         child: Scaffold(
             bottomNavigationBar: BottomNavigationBar(
-              backgroundColor: Colors.blueGrey,
+              backgroundColor: Colors.blue,
+              unselectedItemColor: Colors.amber,
               selectedItemColor: Colors.blue[900],
               unselectedFontSize: 15,
               selectedFontSize: 17,

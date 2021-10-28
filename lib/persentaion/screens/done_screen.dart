@@ -1,10 +1,11 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import 'package:todoly/data/data.dart';
+
 class DoneScreen extends StatelessWidget {
-  
   const DoneScreen({Key? key}) : super(key: key);
 
   @override
@@ -16,10 +17,13 @@ class DoneScreen extends StatelessWidget {
             title: Text(
               Done[index].taskName,
             ),
+            trailing: Text(
+                DateFormat('dd/MM').add_jm().format(Done[index].doneTask!)),
           );
         },
         itemCount: Done.length,
       ),
+
       /* ListView(
               children: tasks
                   .map(

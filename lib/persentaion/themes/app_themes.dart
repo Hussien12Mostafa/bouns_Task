@@ -1,9 +1,10 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 class AppThemes {
   static final ThemeData darkMode = ThemeData();
   static final ThemeData lightTheme = ThemeData(
-    
     tabBarTheme: const TabBarTheme(
       labelColor: Colors.blue,
       /* labelStyle: TextStyle(fontSize: 25) */
@@ -17,6 +18,7 @@ class AppThemes {
     ),
     scaffoldBackgroundColor: Colors.white,
     appBarTheme: AppBarTheme(
+      iconTheme: IconThemeData(color: Colors.black),
       toolbarTextStyle: const TextStyle(
         color: Colors.black,
       ),
