@@ -3,11 +3,11 @@
 import 'package:flutter/material.dart';
 import 'package:todoly/data/data.dart';
 import 'package:todoly/data/models/task.dart';
-import 'package:todoly/persentaion/screens/allTask.dart';
+
 
 class AddTaskScreen extends StatelessWidget {
   static const String routeName = "/addTask";
-   TextEditingController taskNameController = TextEditingController();
+  TextEditingController taskNameController = TextEditingController();
 
   AddTaskScreen({Key? key}) : super(key: key);
 
@@ -43,8 +43,9 @@ class AddTaskScreen extends StatelessWidget {
                   onPressed: () {
                     if (taskNameController.text != '') {
                       tasks.add(Task(taskName: taskNameController.text));
-                      
+                     
                       Navigator.of(context).pop(taskNameController.text);
+                     
                     }
                   },
                   child: Text('Add Task')),
