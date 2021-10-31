@@ -18,16 +18,16 @@ class AppThemes {
     ),
     scaffoldBackgroundColor: Colors.white,
     appBarTheme: AppBarTheme(
-      iconTheme: IconThemeData(color: Colors.black),
+      iconTheme: IconThemeData(color: Colors.amber),
       toolbarTextStyle: const TextStyle(
-        color: Colors.black,
+        color: Colors.amber,
       ),
-      backgroundColor: Colors.grey[200],
+      backgroundColor: Colors.black,
       centerTitle: true,
       titleTextStyle: const TextStyle(
         fontSize: 25,
         fontWeight: FontWeight.bold,
-        color: Colors.black,
+        color: Colors.amber,
       ),
     ),
     textTheme: const TextTheme(

@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_local_variable, unused_element
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_local_variable, unused_element, must_be_immutable
 
 import 'package:flutter/material.dart';
 import 'package:todoly/data/data.dart';
@@ -42,7 +42,7 @@ class AddTaskScreen extends StatelessWidget {
               ElevatedButton(
                   onPressed: () {
                     if (taskNameController.text != '') {
-                      tasks.add(Task(taskName: taskNameController.text));
+                      tasks.add(Task(taskName: taskNameController.text,dueDate: DateTime.utc(2022, 1, 9) ));
                      
                       Navigator.of(context).pop(taskNameController.text);
                      

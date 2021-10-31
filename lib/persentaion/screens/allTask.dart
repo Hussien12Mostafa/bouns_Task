@@ -1,9 +1,8 @@
-// ignore_for_file: file_names, prefer_const_constructors
+// ignore_for_file: file_names, prefer_const_constructors, curly_braces_in_flow_control_structures
 
 import 'package:flutter/material.dart';
 import 'package:todoly/data/data.dart';
 import 'package:todoly/data/models/task.dart';
-import 'package:date_field/date_field.dart';
 
 class AllTasks extends StatefulWidget {
   const AllTasks({Key? key}) : super(key: key);
@@ -13,6 +12,20 @@ class AllTasks extends StatefulWidget {
 }
 
 class _AllTasksState extends State<AllTasks> {
+  DateTime selectedDate = DateTime.now();
+
+  Future<void> _selectDate(BuildContext context) async {
+    DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: selectedDate,
+        firstDate: DateTime.now(),
+        lastDate: DateTime(2100));
+    if (picked != null && picked != selectedDate)
+      setState(() {
+        selectedDate = picked;
+      });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,11 +42,10 @@ class _AllTasksState extends State<AllTasks> {
                       //     .pushNamed(AddTaskScreen.routeName);
                       // setState(() {});
                       showModalBottomSheet<void>(
+                        isScrollControlled: true,
                         context: context,
                         builder: (BuildContext context) {
                           TextEditingController taskNameController =
-                              TextEditingController();
-                          TextEditingController taskDateController =
                               TextEditingController();
                           return Scaffold(
                               appBar: AppBar(
@@ -48,7 +60,8 @@ class _AllTasksState extends State<AllTasks> {
                                         TextField(
                                           // keyboardType: TextInputType.phone,
                                           controller: taskNameController,
-
+                                          toolbarOptions: ToolbarOptions(copy: true,paste: true,cut:true,selectAll: true),
+                                         
                                           decoration: InputDecoration(
                                               hintText: "Enter Task Name",
                                               label: Text('Task Name'),
@@ -66,26 +79,11 @@ class _AllTasksState extends State<AllTasks> {
                                                     width: 2),
                                               )),
                                         ),
-                                        DateTimeFormField(
-                                          decoration: const InputDecoration(
-                                            hintStyle: TextStyle(
-                                                color: Colors.black45),
-                                            errorStyle: TextStyle(
-                                                color: Colors.redAccent),
-                                            border: OutlineInputBorder(),
-                                            suffixIcon: Icon(Icons.event_note),
-                                            labelText: 'Only date',
-                                          ),
-                                          mode: DateTimeFieldPickerMode.date,
-                                          autovalidateMode:
-                                              AutovalidateMode.always,
-                                          validator: (e) => (e?.day ?? 0) == 1
-                                              ? 'Please not the first day'
-                                              : null,
-                                          onDateSelected: (DateTime value) {
-                                            print(value);
-                                          },
-                                        ),
+                                        ElevatedButton(
+                                            onPressed: () {
+                                              _selectDate(context);
+                                            },
+                                            child: Text('Pick Date'))
                                       ],
                                     ),
                                     ElevatedButton(
@@ -93,7 +91,8 @@ class _AllTasksState extends State<AllTasks> {
                                           if (taskNameController.text != '') {
                                             tasks.add(Task(
                                                 taskName:
-                                                    taskNameController.text));
+                                                    taskNameController.text,
+                                                dueDate: selectedDate));
                                             ToDo.add(tasks[tasks.length - 1]);
                                             setState(() {});
                                             Navigator.of(context)

@@ -19,6 +19,8 @@ class DoneScreen extends StatelessWidget {
             ),
             trailing: Text(
                 DateFormat('dd/MM').add_jm().format(Done[index].doneTask!)),
+            subtitle:
+                Text(DateFormat('dd/MM').add_jm().format(Done[index].dueDate)),
           );
         },
         itemCount: Done.length,

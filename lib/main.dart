@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:todoly/persentaion/screens/add_task_screen.dart';
 import 'package:todoly/persentaion/screens/home_screen.dart';
@@ -15,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'ToDoly',
       theme: AppThemes.lightTheme,
-      
+      debugShowCheckedModeBanner: false,
       routes: {
         '/': (_) => HomeScreen(),
         AddTaskScreen.routeName: (context) => AddTaskScreen(),
